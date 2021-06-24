@@ -13,7 +13,7 @@ class Entity
         }
 };
 
-class Player : public Entity
+class Player : public Entity    / multiple inhertance, base class name sare just separated by commas
 {
     public:
         const char* Name;
