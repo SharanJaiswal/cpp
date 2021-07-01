@@ -1,7 +1,7 @@
 // Interfaces are pure virtual functions. Its likely same as abstract method or interface.
 // Basically it helps to define a virtual function in base class that doesnt have an implementation base class, but FORCES sublcass to have its implementation.
-// those base are basically contains only templates. and since they dont have body, we cant instantiate them.
-// If subclass doesnt have overridinf function, we cant even instantiate the subclass. Try ir by commenting the whole method of Player, & then look its objects.
+// those base class basically contains only templates. and since they dont have body, we cant instantiate them.
+// If subclass doesnt have overriding function, we cant even instantiate the subclass. Try it by commenting the whole method of Player, & then look its objects.
 
 #include <iostream>
 #include <string>

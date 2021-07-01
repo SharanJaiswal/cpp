@@ -1,4 +1,4 @@
-// // Static methods or static attributes of the class are in namespace of the class, but are not distinctlt part of every class instance.
+// // Static methods or static attributes of the class are in namespace of the class, but are not distinct part of every class instance.
 // // Unlike static vars and funcs., Static methods or static attributes are not limited to particular translation unit; they are limited to their class.
 // // Static attributes are limited to that class instances. Its kind of like, they are global values for every instances of that class.
 // // static attributes/methods can be called without a class instance.
@@ -69,9 +69,6 @@ int main()
     e2.Print();
 
     // static method call
-    e1.Display();
-    e2.Display();
-
     Entity::Display();  // PREFFERED WAY
     e1.Display();   // Non-Preffered way
     e2.Display();   // Non-Preffered way

@@ -36,7 +36,9 @@ int main()
     // everything is fine till here
 
     // concept of polymorphism
-    //p is actually Player type. But we are assigning it to the Entity type. So, whenwe call GetName(), Entity's GetName is being called.
+    // p is actually Player type. But we are assigning it to the Entity type. So, when virtual keyword and override keyword are commented, and when we call GetName(), Entity's GetName is being called.
+    // this happens because we are calling GetName with entity which is of type Entity, irrespective of p is assigned to entity.
+    // but when virtual and override keyword are uncommented, V-Table is being generated and stored, thus base class function is overridden based on calling object type.
     Entity* entity = p;
     std::cout << entity->GetName() << std::endl;
 

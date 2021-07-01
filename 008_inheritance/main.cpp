@@ -1,4 +1,4 @@
-// Anything that is not private in base class, is being accessed by the chile class
+// Anything that is not private in base class, is being accessed by the child class
 
 #include<iostream>
 
@@ -13,7 +13,7 @@ class Entity
         }
 };
 
-class Player : public Entity    / multiple inhertance, base class name sare just separated by commas
+class Player : public Entity    // multiple inhertance, base class name sare just separated by commas
 {
     public:
         const char* Name;
@@ -27,9 +27,10 @@ int main()
 {
     std::cout << sizeof(Entity) << ", " << sizeof(Player) << std::endl;
     Player player;
+    player.Name = "Sharan";
     player.PrintName();
     player.Move(5.0f, 5.0f);
-    player.X;
-    player.Y;
+    std::cout << player.Y << std::endl;
+    std::cout << player.X << std::endl;
     return 0;
 }
