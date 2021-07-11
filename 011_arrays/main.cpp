@@ -13,8 +13,8 @@ int main()
     delete[] arr1;
 
 
-    // when array is initialized innstack, its size has to be compile time known constant. Not neccesarily a constant.
-    static int size = 5;    // couls also be    static const int size = 5;
+    // when array is initialized in stack, its size has to be compile time known constant. Not neccesarily a constant.
+    static int size = 5;    // could also be    static const int size = 5;
     int arr2[size];
     for (int i = 0; i < 5; i++)
     {

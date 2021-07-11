@@ -50,7 +50,8 @@ int main()
     // Entity *e = new Entity();
     // std::cout << e->GetName() << std::endl;
 
-    Entity* e1 = new Player("");
+    Entity* e0 = new Player("");
+    PrintName(e0);
 
     Player *p = new Player("Cherno");
     std::cout << p->GetName() << std::endl;
@@ -58,8 +59,8 @@ int main()
     Entity *entity = p;
     std::cout << entity->GetName() << std::endl;
 
-    // Entity *e1 = new Entity();
-    // PrintName(e1);
+    Entity *e1 = new Entity();
+    PrintName(e1);
 
     Player *p1 = new Player("Cherno");
     PrintName(p1);

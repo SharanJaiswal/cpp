@@ -6,7 +6,8 @@
 class Entity
 {
     public:
-        virtual std::string GetName() { return "Entity"; }
+        // virtual std::string GetName() { return "Entity"; }
+        std::string GetName() { return "Entity"; }
 };
 
 class Player : public Entity
@@ -17,7 +18,8 @@ class Player : public Entity
         Player(const std::string& name)
             : m_Name(name) {}
 // writing the OVERRIDE keyword to the declaration of the overriding method is just a good practice. One can omit it also.
-        std::string GetName() override { return m_Name; }
+        // std::string GetName() override { return m_Name; }
+        std::string GetName() { return m_Name; }
 };
 
 // Ignone this below function if reading for the first time. You will get to know its use when it is asked later below somewhere.

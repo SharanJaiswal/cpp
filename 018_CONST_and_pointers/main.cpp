@@ -15,7 +15,7 @@ class Entity
             return m_X;
         }
 
-// below function returns a pointer whose dereferenced value cant be modified, the contents of the retuened pointer cant be modified, function cant modify the class member
+// below function returns a pointer whose dereferenced value cant be modified, the contents of the returned pointer cant be modified, function cant modify the class member
         const int* const GetY() const
         {
             return point_Y;

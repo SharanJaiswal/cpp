@@ -2,7 +2,7 @@
 // // Unlike static vars and funcs., Static methods or static attributes are not limited to particular translation unit; they are limited to their class.
 // // Static attributes are limited to that class instances. Its kind of like, they are global values for every instances of that class.
 // // static attributes/methods can be called without a class instance.
-// // static methods dont have access to class instances.
+// // static methods dont have access to class instances. [kyuki babuji kabhi bhi bete ka phone nahi lete, but beta leta hai]
 // // Inside a static method, we cannot write code that refers to the class instance, because we dont have access to it.
 // // We can only access the static attributes from static method.
 // // However normal class methods can access the static attributes, DUHH!! (because they are for the whole instance of that class.)
