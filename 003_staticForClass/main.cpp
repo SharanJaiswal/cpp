@@ -4,8 +4,8 @@
 // // static attributes/methods can be called without a class instance.
 // // static methods dont have access to class instances. [kyuki babuji kabhi bhi bete ka phone nahi lete, but beta leta hai]
 // // Inside a static method, we cannot write code that refers to the class instance, because we dont have access to it.
-// // We can only access the static attributes from static method.
-// // However normal class methods can access the static attributes, DUHH!! (because they are for the whole instance of that class.)
+// // We can only access the static attributes from static method as well AS FROM STATIC FUNCTION WITH PARAMETERS of STATIC TYPE.
+// // However normal class methods can also access the static attributes, DUHH!! (because they are for the whole instance of that class.)
 
 // #include <iostream>
 // struct Entity 
@@ -32,6 +32,7 @@
 struct Entity
 {
     static int x, y;
+    int z;
 
     void Print(void)
     {
@@ -44,9 +45,18 @@ struct Entity
     }
 };
 
+// Normal function can also access static & normal attributes.
+// Just for nemonics reference. Static methods are like static function written outside of a class, taking that class's members only
+// If we wouldn't have provided the parameter of that class, function wouldn't have known
+// So, this is kinda static function looks like, but without accessing non-static members
+void Print(Entity& e)
+{
+    std::cout << e.x << ", " << e.y << ", " << e.z <<  std::endl;
+}
+
 // scope of the static variable
-int Entity::x /* = some value (it is optional to initialize) */;
 int Entity::y /* = some value (it is optional to initialize) */;
+int Entity::x /* = some value (it is optional to initialize) */;
 
 int main()
 {  

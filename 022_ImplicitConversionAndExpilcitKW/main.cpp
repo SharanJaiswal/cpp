@@ -48,6 +48,7 @@ int main()
     PrintEntity(22);
     // PrintEntity("Sharan");  // E R R O R
     PrintEntity(String("Sharan"));
+    Example ex5 = (String)"geez";
     PrintEntity(Entity("Jaiswal")); // Here, preffered way of creating an object is used, where Entity constructor is being called to create an object, which implictly takes char const and converts it into std::string
 
 
@@ -60,6 +61,5 @@ int main()
     Example ex2 = (Example)42;  // M-1 : to convert the arg to Entity type
     Example ex3 = Example(35);  // M-2 : to call the constructor explicitly
     Example ex4(78);            // M-3 : Conversion to Example type is happening first
-    Example ex5 = (String)"geez";
     return 0;
 }

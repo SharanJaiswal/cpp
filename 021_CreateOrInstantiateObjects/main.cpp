@@ -13,6 +13,23 @@ class Entity
         const String& GetName() const { return m_Name; }
 };
 
+class ScopedPtr
+{
+    private:
+        Entity *m_Ptr;
+    public:
+        ScopedPtr(Entity *ptr)
+            : m_Ptr(ptr)
+        {
+            std::cout << "Scope Begins." << std::endl;
+        }
+        ~ScopedPtr()
+        {
+            std::cout << "Scope Ends." << std::endl;
+            delete m_Ptr;
+        }
+};
+
 int main()
 {
     #include "../fileio.h"
@@ -47,5 +64,15 @@ int main()
     e_ptr = nullptr;    // good practice to avoid wild/dangling pointer
 
     // https://www.geeksforgeeks.org/how-to-initialize-array-of-objects-with-parameterized-constructors-in-c/
+
+// ---------------------------------------------------------------------------------------------------------------------//
+// SCOPE OF OBJECT CREATED ON HEAPS
+// Although object instantiated on heap may last till the program ends, or unless it is explicitly freed.
+// But we can free the object on heap, once its scope of block ends
+// Here, memory on heap will be freed, as well as, the pointer will be popped out of the stack memory
+    {
+        ScopedPtr ptr = new Entity();
+    }
+
     return 0;
 }

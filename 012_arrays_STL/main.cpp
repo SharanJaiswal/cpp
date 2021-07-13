@@ -1,8 +1,11 @@
+// std::array are build in stack memory
+
 #include <iostream>
 #include <array>
 
 int main()
 {
+    #include "../fileio.h"
     std::array<int, 5> arr1;
     for(int i = 0; i < arr1.size(); i++)
     {

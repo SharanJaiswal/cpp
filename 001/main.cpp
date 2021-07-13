@@ -40,7 +40,9 @@ class Log
         }
 };
 
-int main() {
+int main()
+{
+    #include "../fileio.h"
     Log log;
     log.setLevel(log.logLevelInfo);
     log.Error("Hello!");
