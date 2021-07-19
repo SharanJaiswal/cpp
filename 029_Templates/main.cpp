@@ -1,5 +1,5 @@
 // They are like macros, can do pretty much anything
-// They areused to avoid defining multiple function overloads for a given function names.
+// They are used to avoid defining multiple function overloads for a given function names.
 // For a single function, templates can be defined, and it will decide what kind of execution to proceed, based on certain condition.
 // conditions like, different paramater type, for which by convention,  we were using function overloads.
 #include <iostream>

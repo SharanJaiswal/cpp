@@ -1,8 +1,9 @@
 #include <iostream>
 int main()
 {
-    // STRING LITERALS --> "Sharan" .   What this actually becomes(mutable or immutable), depends on a number of factors. Hover oover the below literal by uncommenting.
-    const char* arr = "Sharan\0";  // explicit \0 will be appended at the end even if  null is implicitly mentioned inside the string literal
+    #include "../fileio.h"
+    // STRING LITERALS --> "Sharan" .   What this actually becomes(mutable or immutable), depends on a number of factors. Hover over the below literal by uncommenting.
+    const char* arr = "Sharan";  // explicit \0 will not needed be appended at the end as null is implicitly mentioned inside the string literal
     // even if const is removed,ie, (char* arr = "Sharan") arr is still immutable, ie, arr[2]='e' is invalid operation. Some compilers may allow it, but this is undefined behaviour, and this mutation should not be practiced.
     // IT SHOULD ALWAYS BE IN PRACTICE TO USE const WHILE DEFINING A STRING LITERAL USING CHARACTER POINTER. DONT IGNORE const WITH CHARACTER POINTER.
     // However, if we define it as an array instead of pointer, then mutaion operation is valid
@@ -11,7 +12,7 @@ int main()
     std::cout << arr1 << std::endl;
 
     // immutable character pointer
-    const char* name = "Shara1";   // just because it is a char pointer, that doesn't mean that it is allocated in heap. It is still in stack memory. If new is used, then delete is used.
+    const char* name = "Shara1";   // just because it is a char pointer, that doesn't mean that it is allocated in heap. It is still in stack memory. But if new is used, then delete is used.
     std::cout << name << std::endl;
 
     char str1[7] = {'S', 'h', 'a', 'r', 'a', '2', 0};

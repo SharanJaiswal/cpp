@@ -70,7 +70,7 @@
 // // // // // // // // // // // // // // // // // // // // //
 // // // // // // // // C A U T I O N // // // // // // // //
 // // // // // // // // // // // // // // // // // // // //
-// If we runthe below code, we will create two instances of the Example class, everytime when we initialize the Entity class object
+// If we run the below code, we will create two instances of the Example class, everytime when we initialize the Entity class object
 // First, it'll be created in the Entity private member section. It'll initialize Example object w/ calling Example constructor w/o any argument
 // Second, it'll create another example object in the Entity's w/o param constructor, and will assign to variable m_Example, by discarding old already created Example instance
 // This will impact performance. This doesn't happen with primitive data types
@@ -118,6 +118,8 @@ int main()
 {
     #include "../fileio.h"
     Entity e0;
+    Entity e1 = std::string("Sharan");
+    // Although parameterized constructor is called, but still members will have get initialized, for the object.
 
     return 0;
 }

@@ -1,3 +1,4 @@
+// Scope rules are applicable on enums. The do have defined lifetime within their scope.
 #include<iostream>
 
 // enum Example : unsigned char    // <: unsigned char> is optional. unsigned int32 by default. Also, char is basically integer int8.

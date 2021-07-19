@@ -25,6 +25,7 @@ class Player : public Entity    // multiple inhertance, base class name share ju
 
 int main()
 {
+    #include "../fileio.h"
     std::cout << sizeof(Entity) << ", " << sizeof(Player) << std::endl;
     Player player;
     player.Name = "Sharan";

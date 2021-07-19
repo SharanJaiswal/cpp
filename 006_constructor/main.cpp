@@ -1,4 +1,4 @@
-// constructor is a special type of method that runs everytime we CREATE or instantiate an object, by any means.
+// constructor is a special type of method that runs everytime when we CREATE or instantiate an object, by any means.
 // they have name same as the class name with NO RETURN TYPE(NOT EVEN VOID !!!)
 // they wont run if object dont get instantiated. eg, if we just run static method from class, they wont run.
 // when we use 'new' keyword, we  create a new object instance. Hence it will call the constructor

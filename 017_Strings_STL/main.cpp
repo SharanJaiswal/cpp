@@ -1,3 +1,4 @@
+// std::string takes memory on heap, not on stack
 #include <iostream>
 #include <string>   // Also contains all the C string functions.
 
@@ -15,6 +16,7 @@ void PrintString(const std::string& string)
 
 int main()
 {
+    #include "../fileio.h"
     std::string str = "Sharan";
     std::cout << str << std::endl;
 
@@ -31,10 +33,9 @@ int main()
     str1 += " Jaiswal";
 
     bool contains = str2.find("ai") != std::string::npos;
-    std::cout << contains << std::endl;
+    std::cout << contains << ". \'ai\' is present at " << str2.find("ai") << std::endl;
 
-
-    // PASSING STRING AROUND TO OTHER FUNCTIONS
+    // PASSING STRING AROUND, TO OTHER FUNCTIONS
     PrintString(str1);
 
     return 0;

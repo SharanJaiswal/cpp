@@ -30,6 +30,7 @@ void PrintName(Entity* entity)
 
 int main()
 {
+    #include "../fileio.h"
     Entity* e = new Entity();
     std::cout << e->GetName() << std::endl;
 
@@ -52,7 +53,7 @@ int main()
     PrintName(p1);
 
     // AISA BHEDBAHHV KYU?
-    // REASON: we've delared normally our methods. When time comes to call the methods, its going to call whatever method belongs to the type.
+    // REASON: we've declared normally our methods. When time comes to call the methods, its going to call whatever method belongs to the type.
     // Here its Entity type even if the object instance of type Player.
     // To overcome this partiality, here's where Virtual function comes in.
     // VF implements Dynamic Dispatch which compiles typically implementsv via V-Tables, which is a table that contains mapping of VF inside our base class.

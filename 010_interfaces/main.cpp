@@ -46,6 +46,7 @@ void Print(Printable* obj)
 
 int main()
 {
+    #include "../fileio.h"
     // we cant instantiate the Entity class as it dont have body
     // Entity *e = new Entity();
     // std::cout << e->GetName() << std::endl;
@@ -70,7 +71,7 @@ int main()
 
     //below, palyer class will also print Entity when Print is called, because the GetClassName from Entity is inherited from the Entity to the player.
     // you can declare and define Players own GetClassName, and call it by using Player instance.
-    // toggle the GetClassName of Player to comment/uncomment to see this efect also.
+    // toggle the GetClassName of Player to comment/uncomment to see this effect also.
     Print(e2);
     Print(p2);
     Print(e1);

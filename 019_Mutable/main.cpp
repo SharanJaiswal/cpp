@@ -18,7 +18,28 @@ class Entity
 
 int main()
 {
+    #include "../fileio.h"
     const Entity e;
     e.GetName();
+
+    // Using mutable with lambda function when variables are passed by value
+    int a = 8;  // the passed variable should be declared before the lambda function definition.
+    // Defining before the function call is absurd, because function doesnt know the variable.
+    // passing by value, copying is happening
+    auto func = [=]() mutable
+    {
+        // // If mutable keyword is not present, then we have to locally define a new variable of the same type as of the variable which we are going to manipulate locally in this lambda function
+        // int y = a;
+        // y++;
+        // std::cout << y << std::endl;
+        
+        a++;
+        // this changes happens only in local, actual variable outside of this lambda function remains the same
+        // This happens because we are passing value by value, hence coipying is done. We dont use 'mutable' when we use pass the variable by reference
+        std::cout << a << std::endl;
+    };
+
+    func();
+
     return 0;
 }

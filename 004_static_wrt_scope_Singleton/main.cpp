@@ -46,7 +46,7 @@
 
 // class Singleton
 // {
-//     // We dont want to have this class constructor because, if its constructor will be present, then it'll give permission to instantiate this class objects outside of this class.
+//     // We dont want to have this class constructor as public because, if its constructor will be present, then it'll give permission to instantiate this class objects outside of this class.
 //     // Hence we will make this class constructor private or disabled by any means
 //     private:
 //         Singleton() {}   // disabling class constructor, to not allowing the instance creation out of this class
@@ -83,7 +83,7 @@
 //     inst3.DummyFunc();
 
 //     // However, if we dont delete the copy constructor, this also didn't assured us. We could still create new instance of Singleton class.
-//     // Hence, to combat potential human error, we have to delet the copy constructor of Singletoin class
+//     // Hence, to combat potential human error, we have to delete the copy constructor of Singleton class
 //     return 0;
 // }
 
@@ -96,8 +96,9 @@
 class Random
 {
     private:
-        // This constructor will get called once only
-        Random() { srand(time(NULL)); }
+        // Random() = delete;   // We won't delete the class constructor.
+        // Since only one time object is instantiated, so this constructor will get called once only.
+        Random() { srand(time(NULL)); } // Since we want to instantiate exactly one objet from iside of class, hence we won't delete it.
         Random(const Random& obj) = delete;
         float GetRandNumImpl() { return rand(); }
     public:

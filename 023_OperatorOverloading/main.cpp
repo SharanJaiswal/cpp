@@ -99,7 +99,6 @@ int main()
     {
         std::cout << "Not Equal" << std::endl;
     }
-
-
+    
     return 0;
 }

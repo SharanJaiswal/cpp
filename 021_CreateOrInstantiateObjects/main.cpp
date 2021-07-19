@@ -9,6 +9,7 @@ class Entity
     public:
         Entity() : m_Name("Unknown") {}
         Entity(const String& name) : m_Name(name) {}
+        ~Entity() { std::cout << "Destruct Ent." << std::endl; }
 
         const String& GetName() const { return m_Name; }
 };
@@ -34,7 +35,7 @@ int main()
 {
     #include "../fileio.h"
     // Method-1 (creating object on stack. Scope bound. Evem if there is an empty scopes where we have  just { ... })
-    // It is fast comparetively than that on heap memory.
+    // It is comparetively faster than that on heap memory.
     Entity e1; // or Entity e1("Sharan")
     std::cout << e1.GetName() << std::endl;
     // Below two are the fastest and managed and most preffered way to create an object in C++
@@ -42,7 +43,11 @@ int main()
     std::cout << e2.GetName() << std::endl;
     Entity e3 = Entity("Jaiswal");
     std::cout << e3.GetName() << std::endl;
-    Entity e5 = String("Er. SSJ");
+    // Entity e6 = "Jhakaas";   // It wont work because the constructor is taking a std::string, but we are providing const char*
+    // Since only one implicit conversion can take place, which is happening by converting the RHS to Entity type, another implicit conversion cant happen.
+    Entity e5 = String("Er. SSJ");  // This will work fine because the argument passed to the parameterized constructor is of std::string type.
+    // Now, one implicit conversion can be happen, ie, RHS to Entity type.
+    std::cout << e5.GetName() <<std::endl;
 
     Entity *e;
     {
@@ -50,6 +55,7 @@ int main()
         e = &e4;
         std::cout << e->GetName() << std::endl;
     }   // pointer will be there however empty scope block will gets vanished after its lifetime ends
+    std::cout << e->GetName() << std::endl; // It shouldn't work, because object scope ended and its popped out of the stack frame
 
     // Method-2 (creating objects on heap memory) It is slow comparetively
     Entity *e_ptr = nullptr;    // initializing a Entity pointer on stack

@@ -8,16 +8,20 @@ class Entity
         int* point_Y = &m_Y;
         mutable int m_W;
     public:
-        int GetX() const    // writing const at the right of the function name. This only works/valid inside the class.
-// This imposes restriction on GetX function to not modify any of this class member variables.ie, they can be modified(if they are allowed), but not from this function
+        int GetX() const    // writing const at the right of the function name. THIS IS ONLY VALID/WORKS INSIDE OF CLASS.
+// This imposes restriction on GetX function to NOT modify any of this class member variables.ie, they can be modified(if they are allowed), but not from this function
         {
             // m_X = 2; // we cant change the class attribute value.
             return m_X;
         }
 
-// below function returns a pointer whose dereferenced value cant be modified, the contents of the returned pointer cant be modified, function cant modify the class member
+        // below function returns a pointer whose dereferenced value cant be modified out of this function, but it can be modified inside of this function
+        // the contents of the returned pointer can't be modified out of this function, but it can be modified inside of this function,
+        // and of course, function cant modify the class member eg, point_Y
         const int* const GetY() const
         {
+            *point_Y = 5;   // Allowed because, we are not modifying the member point_Y, but the address that this pointer is pointing to.
+            // point_Y = &m_X;  // Not allowed
             return point_Y;
         }
 
@@ -26,7 +30,7 @@ class Entity
         {
             return m_Z;
         }
-    // The above GetZ() method can have two versions. One with 'const' keyword; other without it. ANd they both work perfectly fine.
+    // The above GetZ() method can have two versions. One with 'const' keyword; other without it. And they both work perfectly fine.
     // Always mark methods as 'const' if they are not supposed to modify the class. It is a good practice.
 
     // There are special class attributes which can be mutated inside the const methods. They need to be prepended with 'mutable' keyword at their definition.
@@ -52,6 +56,7 @@ void PrintEntity(const Entity& e)
 
 int main()
 {
+    #include "../fileio.h"
     const int MAX_AGE = 90; // lets define a constant integer
     int* a  = new int;  // we DEFINED a new integer pointer. It has some garbage value by default.
     std::cout << a << " : " << *a <<std::endl;

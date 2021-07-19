@@ -63,7 +63,7 @@ int main()
     {
         std::cout << vertices[i] <<std::endl;
     }
-    for(Vertex v : vertices)    // Rnage based index. However it is copying the data
+    for(Vertex v : vertices)    // Range based index. However it is copying the data
     {
         std::cout << v << std::endl;
     }
@@ -82,7 +82,7 @@ int main()
     Function(vertices);
 
 // Even when we are trying to push an element{1,2,3} to the vector Vertex, we are observing that a copy constructor is being called.
-// This is happening because, initially, we are actually constructing it in the current stack frame of the main() function.
+// This is happening because, initially, we are actually constructing an object which needs to be pused in the current stack frame of the main() function.
 // Later, this will get transferred to the actual Vertex vector, and this happens via the COPYING. Hence, copy constructor is being called.
 // We also observe that, everytime when capacity of vector doubles, <size> number of copies again happen, then new element gets added via its own copying
     vertices.push_back({7,8,9});
@@ -95,19 +95,30 @@ int main()
 // lets acheive this with new vector type
 std::cout << std::endl << "---------------------------------------" << std::endl << std::endl;
 
-    std::vector<OptVertex> optver; // std::vector<OptVertex> optver(3); it will actuallu make three OptVertex objects
+    std::vector<OptVertex> optver; // std::vector<OptVertex> optver(3); it will actually make three OptVertex objects
     optver.reserve(3);  // Its actually going to reserve the space for 3 OptVertex object, but not yet initialize them
     optver.push_back(OptVertex(99,88,77));
     optver.push_back(OptVertex(66,55,44));
     optver.push_back(OptVertex(33,22,11));  // only 3 copies till now
 // If now a single element is being pushed back to the optver vector, then total 7 copies will be shown
     optver.clear();
-// We can furthue optimize by constructing the elelemnts in vector itself
+// We can furthue optimize by constructing the elements in vector itself
 std::cout << "EMPLACING for constructing object in vector itself discards copying." << std::endl;
     optver.emplace_back(1,2,3);
     optver.emplace_back(4,5,6);
     optver.emplace_back(7,8,9);
 std::cout << "0 copying done for first 3 elements pushed, rather EMPALCED" << std::endl;
+
+
+    // some more operations
+    // .at(,index>);
+    // .front()
+    // .back()
+    // .pop_back(); // void return type
+    // ways to initialize vectors... std::vector<int> A(<size> [, <initial value; 0 by default>]);
+    // copy onr vector to another std::vector<int> NV(A);
+    // another way to initialize with specific range of existing vector: std::vector<OptVertex> NV(optver.begin()+1, optver.end()-1);
+
 
     return 0;
 }

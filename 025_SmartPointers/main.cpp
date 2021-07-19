@@ -1,3 +1,4 @@
+// https://en.cppreference.com/w/cpp/memory/shared_ptr
 // Smart pointers help to save a step of calling delete function for freeing the dynamiclly allocated memory. It automates that part.
 // Smart pointers are kind of wrapper around real raw pointers. They are of many types
 #include <iostream>
@@ -22,9 +23,9 @@ int main()
 {
     #include "../fileio.h"
     std::cout << "Now unique pointers." << std::endl;
-    // Unique pointers: memory pointed by this knid of pointers, wont be pointed by any other pointers during their lifetime. It is scoped pointer, and when scope ends, deleted the memory on heap automatically
+    // Unique pointers: memory pointed by this knid of pointers, wont be pointed by any other pointers during their lifetime. It is scoped pointer, and when scope ends, deletes the memory on heap automatically
     // If 2 unique pointers pointing to same memory, and if one frees the memory, then other will point to memory that is being freed, which is DUMB THING! Hence, we cant copy unique pointers.
-    // They have explicit constructors.
+    // They have explicit constructors. Also, since we cant assign/copy unique pointers to another unique pointers, hence their copy constructors are deleted/disabled.
     {
         // std::unique_ptr<Entity> entity(new Entity());   // M-1 since its unique_ptr constructor is explicit.
         std::unique_ptr<Entity> entity = std::make_unique<Entity>();    // M-2 Preffered way to handle the exception. Otherwise we'll get some dangling point due to error, with no reference to the memory, creating a memory leak.
@@ -56,7 +57,30 @@ int main()
         {
             std::shared_ptr<Entity> entity = std::make_shared<Entity>();
             e0 = entity;    // Copying is happening but at Background, reference count is not increasing for the shared pointer.
+            
+            // Below next 3 lines are used for observing the use_count() of both weak_ptr and shared_ptr
+            // In both type of pointer, use_count() always shows the total no of shared_ptr pointing to the same memory loctaion
+            std::shared_ptr<Entity> tst_ent = entity;
+            std::weak_ptr<Entity> e1 = entity;
+            std::weak_ptr<Entity> e2 = entity;
+
+            if (!e0.use_count()) // for weak pointers, 'expired()' can also be used, but not '==' operator
+            { std::cout << "Not a valid weak pointer" << std::endl; }
+            else { std::cout << "Valid weak pointer. Count is:" << e0.use_count() << std::endl; }
+
+            if(!entity.use_count()) // for shared pointers; '==' oparator can also be used but it is risky, because shared pointer can be wild pointer also
+            { std::cout << "Not Valid shared pointer." << std::endl; }
+            else { std::cout << "Valid shared pointer. Count is:" << entity.use_count() <<  std::endl; }
         }
+         if(!e0.use_count())    // for weak pointers, 'expired()' can also be used, but not '==' operator
+         { std::cout << "Not a valid weak pointer" << std::endl; }
+         else { std::cout << "Valid weak pointer. Count is:" << e0.use_count() << std::endl; }
+
+        // Below ont work because 'entity' named shared variable no longer exist, cuz it got popped out of stack frame
+        // if(!entity.use_count())
+        // { std::cout << "Not Valid shared pointer." << std::endl; }
+        // else { std::cout << "Valid shared pointer." << std::endl; }
+
         // After inner block ends, entity scope ends. So, it is popped out. E0's scope is still present. It still points to the memory.
         // However, since entity scope ends, reference count sets back to 0. This will delete the memory and calls destructor.
         // Here, e0 is pointing to the invalid memory now. This weak pointer can be used to check if the memory to which it is pointing is still valid or not.
