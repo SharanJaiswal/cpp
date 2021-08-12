@@ -28,7 +28,12 @@ void Print(T value)     // 'typename' is alias to 'class' here. Hence, we could 
     std::cout << value << std::endl;
 }
 // This is not actual function but it is a template. It gets converted to function when we call it, based on how we call it, based on the type of the argument passed(in this case)
-
+// Also, if we need to skip this template for any specific datatype, we need to define exact template once again but w/o the template parameter that we want to omit
+template <> // like here, the compiler will first check if the value is of char type, the it will execute this. Else, the above template
+void Print(char value)
+{
+    std::cout << value << std::endl;
+}
 
 //templates for class
 template<int N>   // for array size

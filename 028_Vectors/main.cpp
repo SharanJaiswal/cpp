@@ -71,18 +71,21 @@ int main()
     // vertices.clear();   // flushes all the enetred elements.
     std::cout << "Size: " << vertices.size() << ", Capacity: " << vertices.capacity() << std::endl;
 
-    vertices.erase(vertices.begin() + 1);   // takes iterator, not just randomly a number as an index eg, 0, 1, 2, 3 (DONT USES THESE)
+    // .erase() takes iterator, not just randomly a number as an index eg, 0, 1, 2, 3 (DONT USES THESE)
+    // .erase() can take the range of the iterators as the parameters, but range will work as [START, END)
+    vertices.erase(vertices.begin() + 1);
     for(Vertex& v : vertices)   // Not copying is done. Still Similar result.
     {
         std::cout << v << std::endl;
     }
+    std::cout << "Size: " << vertices.size() << ", Capacity: " << vertices.capacity() << std::endl;
 
     // PASSING VECTORS TO A FUNCTION.
     // Always pass by reference. Thats it. It is less costly
     Function(vertices);
 
 // Even when we are trying to push an element{1,2,3} to the vector Vertex, we are observing that a copy constructor is being called.
-// This is happening because, initially, we are actually constructing an object which needs to be pused in the current stack frame of the main() function.
+// This is happening because, initially, we are actually constructing an object which needs to be pushed from the current stack frame of the main() function.
 // Later, this will get transferred to the actual Vertex vector, and this happens via the COPYING. Hence, copy constructor is being called.
 // We also observe that, everytime when capacity of vector doubles, <size> number of copies again happen, then new element gets added via its own copying
     vertices.push_back({7,8,9});
@@ -111,10 +114,11 @@ std::cout << "0 copying done for first 3 elements pushed, rather EMPALCED" << st
 
 
     // some more operations
-    // .at(,index>);
+    // .at(<index>);
     // .front()
     // .back()
     // .pop_back(); // void return type
+    // .*begin()    .*end()
     // ways to initialize vectors... std::vector<int> A(<size> [, <initial value; 0 by default>]);
     // copy onr vector to another std::vector<int> NV(A);
     // another way to initialize with specific range of existing vector: std::vector<OptVertex> NV(optver.begin()+1, optver.end()-1);

@@ -1,6 +1,7 @@
 // Min heap an max heap(by default)
 // Min and Max is based upon the fact that, whenever we try to fetch the element from it, one by one, we get the max|min of from th heap
-// minH and maxH have stack kinda implementation; although it is in <queue> library
+// minH and maxH have stack kinda implementation; although it is in <queue> library, having alomost all std::queue methods
+// They can have multiple similar elements
 #include <iostream>
 #include <queue>
 #include <vector>
@@ -32,9 +33,11 @@ int main()
     minH.emplace(1);
     minH.push(2);
     minH.emplace(0);
+    minH.emplace(0);
     minH.push(3);
     minH.push(-8);
-    // 3 2 1 0
+    // -8 3 2 1 0 0
+
 
     int m = minH.size();
     for (int i = 0; i < m; i++)
@@ -47,7 +50,6 @@ int main()
     // std::cout << minH.top() << "\n";
     // minH.pop();
     std::cout << "IS empty? " << minH.empty() << std::endl;
-
 
     return 0;
 }

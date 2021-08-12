@@ -1,4 +1,4 @@
-// doubly ended quque DEQUE (pronounced as "DECK"); implemented via various static array and hence book-keeping
+// doubly ended queue DEQUE (pronounced as "DECK"); implemented via various static array and hence book-keeping
 // It is dynamic in nature. NOT TELLING THAT ITS IMPLEMENTED ON DYNAMIC MEMORY
 #include <iostream>
 #include <deque>
@@ -41,6 +41,8 @@ int main()
     } std::cout << "\n";
 
     std::cout << d.max_size() << std::endl;
+
+    // front back begin* end* erase insert size resize shrink_to_fit clear empty = [] (basically same as vector along with push|emplace|pop_front)
 
     return 0;
 }
